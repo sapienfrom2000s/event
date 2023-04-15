@@ -1,0 +1,15 @@
+<h2>New Event</h2>
+
+<% if flash[:notice] %>
+	<%= flash[:notice] %><br>
+<% end %>
+
+<%= form_with model: @action, url: '/e', scope: 'event' do |form| %>
+	<p><%= form.label :title %><br>
+	<%= form.text_field :title %></p>
+	<p><%= form.label :location %><br>
+	<%= form.text_field :location %></p>
+	<p><%= form.label :time %><br>
+	<%= form.text_field :time %></p>
+	<%= form.submit "Submit" %>
+<% end %>

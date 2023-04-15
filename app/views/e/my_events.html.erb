@@ -1,0 +1,12 @@
+<h1>My Events</h1>
+<%= link_to "Home", e_index_path %>
+
+<ul>
+  <% @events.each do |event| %>
+    <li>
+      <h3><%= link_to "#{event.title}", e_path(event) %></h3>
+      Location: <%= event.location %><br>
+      Time: <%= event.time %>
+    </li>
+  <% end %>
+</ul>

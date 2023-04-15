@@ -1,0 +1,22 @@
+<h1>All Events</h1>
+
+<h2>Welcome to Event Brite</h2>
+
+<% if flash[:notice] %>
+  <%= flash[:notice] %><br>
+<% end %>
+
+<%= link_to "New Event", new_e_path %><br>
+<%= link_to "My Events", my_events_path %>
+
+
+<ul>
+  <% @events.each do |event| %>
+    <li>
+      <h3><%= link_to "#{event.title}", e_path(event) %></h3>
+      Location: <%= event.location %><br>
+      Time: <%= event.time %>
+      <p><strong>Created by: <%= event.creator.email %></strong></p>
+    </li>
+  <% end %>
+</ul>

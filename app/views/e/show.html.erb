@@ -1,0 +1,11 @@
+<h1>Event Details</h1>
+<%= link_to "Home", e_index_path %>
+
+<ul>
+  <li>
+    <h3><%= @event.title %></h3>
+    Location: <%= @event.location %><br>
+    Time: <%= @event.time %>
+    <p><strong>Created by: <%= @event.creator.email %></strong></p>
+  </li>
+</ul>
