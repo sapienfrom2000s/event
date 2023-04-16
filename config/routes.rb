@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
   devise_scope :user do
@@ -10,4 +11,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   get '/my_events', to: "e#my_events"
   root "e#index"
+  resources :e do
+    post 'attendance/create'
+  end
 end

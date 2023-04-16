@@ -1,0 +1,19 @@
+
+[1mFrom:[0m /home/bla/repos/event/app/controllers/attendance_controller.rb:6 AttendanceController#create:
+
+     [1;34m4[0m: [32mdef[0m [1;34mcreate[0m
+     [1;34m5[0m:   binding.pry
+ =>  [1;34m6[0m:   [32mif[0m attendance_params[[31m[1;31m"[0m[31mjoin[1;31m"[0m[31m[0m] == [31m[1;31m'[0m[31myes[1;31m'[0m[31m[0m
+     [1;34m7[0m:     attendance = [1;34;4mAttendance[0m.new
+     [1;34m8[0m:     attendance.attendee = current_user
+     [1;34m9[0m:     attendance.attended = [1;34;4mAction[0m.find(params[[33m:e_id[0m])
+    [1;34m10[0m:   [32mend[0m
+    [1;34m11[0m: 
+    [1;34m12[0m:   [32mif[0m attendance.save
+    [1;34m13[0m:     flash[[33m:notice[0m] = [31m[1;31m'[0m[31mYou successfully enrolled for the event[1;31m'[0m[31m[0m
+    [1;34m14[0m:     redirect_to [33m:e_index_path[0m
+    [1;34m15[0m:   [32melse[0m
+    [1;34m16[0m:     flash[[33m:notice[0m] = [31m[1;31m'[0m[31mSomething went wrong[1;31m'[0m[31m[0m
+    [1;34m17[0m:   [32mend[0m 
+    [1;34m18[0m: [32mend[0m
+

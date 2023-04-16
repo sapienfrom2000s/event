@@ -18,6 +18,7 @@ class EController < ApplicationController
 
   def show
     @event = Action.find(params[:id])
+    @attendance = Attendance.new
   end
 
   def create

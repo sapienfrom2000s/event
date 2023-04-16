@@ -1,5 +1,9 @@
 <h1>Event Details</h1>
-<%= link_to "Home", e_index_path %>
+<%= link_to "Home", e_index_path %><br>
+
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
 
 <ul>
   <li>
@@ -9,3 +13,11 @@
     <p><strong>Created by: <%= @event.creator.email %></strong></p>
   </li>
 </ul>
+
+<% unless @event.creator == current_user %>
+  <%= form_with model: @attendance, scope: :attendance, url: e_attendance_create_path(e_id: @event.id) do |form| %>
+    <%= form.check_box("join", {}, "yes", "no")  %>
+    <%= form.label :join, "I want to join" %><br>
+    <p><%= form.submit :Submit %></p>
+  <% end %>
+<% end %>
