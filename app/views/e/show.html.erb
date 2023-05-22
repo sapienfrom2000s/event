@@ -8,8 +8,7 @@
 <ul>
   <li>
     <h3><%= @event.title %></h3>
-    Location: <%= @event.location %><br>
-    Time: <%= @event.time %>
+    <%= render partial: "event_details", locals: { event: @event } %>
     <p><strong>Created by: <%= @event.creator.email %></strong></p>
   </li>
 </ul>

@@ -9,7 +9,20 @@
 	<%= form.text_field :title %></p>
 	<p><%= form.label :location %><br>
 	<%= form.text_field :location %></p>
-	<p><%= form.label :time %><br>
-	<%= form.text_field :time %></p>
+
+	<p>	<%= form.label :description %><br>
+	<%= form.text_area :description %></p>
+
+	<p><%= form.label :start_date %><br>
+	<%= form.date_field :start_date %></p>
+
+	<p><%= form.label :start_time %><br>
+	<%= form.time_field :start_time %></p>
+
+	<p><%= form.label :end_date %><br>
+	<%= form.date_field :end_date %></p>
+	<p><%= form.label :end_time %><br>
+	<%= form.time_field :end_time %></p>
 	<%= form.submit "Submit" %>
 <% end %>
+<i>Add date and time wrt utc</i>

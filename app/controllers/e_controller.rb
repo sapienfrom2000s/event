@@ -23,7 +23,7 @@ class EController < ApplicationController
 
   def create
 
-    @event = current_user.events.build(event_params)
+    @event = current_user.events.build(Action.combine_date_and_time(event_params))
 
     if @event.save
       flash[:notice] = 'Event created successfully'
@@ -37,7 +37,7 @@ class EController < ApplicationController
   private 
 
   def event_params
-    params.require(:event).permit(:time, :location, :title)
+    params.require(:event).permit(:start_time, :start_date, :end_date, :end_time, :description, :location, :title)
   end
 
 end

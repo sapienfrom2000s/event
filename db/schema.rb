@@ -12,8 +12,10 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_04_14_153110) do
   create_table "actions", force: :cascade do |t|
-    t.string "time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.string "location"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
