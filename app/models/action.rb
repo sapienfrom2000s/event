@@ -10,4 +10,4 @@ class Action < ApplicationRecord
 		params.delete(:end_date)
 		params
 	end
-end
+end	

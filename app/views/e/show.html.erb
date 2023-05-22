@@ -1,3 +1,4 @@
+
 <h1>Event Details</h1>
 <%= link_to "Home", e_index_path %><br>
 
@@ -14,9 +15,18 @@
 </ul>
 
 <% unless @event.creator == current_user %>
-  <%= form_with model: @attendance, scope: :attendance, url: e_attendance_create_path(e_id: @event.id) do |form| %>
-    <%= form.check_box("join", {}, "yes", "no")  %>
+  <% attendees_emails = @event.attendees %>
+  <% unless attendees_emails.where(email: current_user.email).exists? %>
+  <%= form_with scope: :attendance, url: e_attendance_create_path(e_id: @event.id) do |form| %>
+    <%= form.check_box("join", {}, "yes", "")  %>
     <%= form.label :join, "I want to join" %><br>
     <p><%= form.submit :Submit %></p>
+  <% end %>
+  <% else %>
+  <%= form_with scope: :attendance, url: e_attendance_delete_path(e_id: @event.id) do |form| %>
+    <%= form.check_box("unjoin", {}, "yes", "")  %>
+    <%= form.label :unjoin, "Remove me from the attendees list" %><br>
+    <p><%= form.submit :Submit %></p>
+  <% end %>
   <% end %>
 <% end %>

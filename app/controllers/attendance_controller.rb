@@ -2,23 +2,27 @@ require 'pry-byebug'
 
 class AttendanceController < ApplicationController
   def create
-    if attendance_params["join"] == 'yes'
-      attendance = Attendance.new
-      attendance.attendee = current_user
-      attendance.attended = Action.find(params[:e_id])
-    end
-
-    if attendance.save
+    return unless attendance_params["join"] == 'yes'
+    @attendance = Attendance.attend_event(params, current_user)
+    
+    if @attendance.save
       flash[:notice] = 'You successfully enrolled for the event'
       redirect_to e_index_path
     else
       flash[:notice] = 'Something went wrong'
-    end 
+    end
+  end
+
+  def delete
+    return unless attendance_params["unjoin"] == 'yes'
+    current_user.attended.delete(Action.find(params[:e_id]))    
+    flash[:notice] = 'Successfully unsubsribed to the event'
+    redirect_to e_index_path
   end
 
   private
 
   def attendance_params
-    params.require(:attendance).permit(:join)
+    params.require(:attendance).permit(:join, :unjoin)
   end
 end
